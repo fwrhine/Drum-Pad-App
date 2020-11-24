@@ -35,7 +35,7 @@ export default class App extends React.Component {
       await soundObject.playAsync().then(status => {
         console.log(status)
         
-        // Dispose sound
+        // Unload sound from memory
         setTimeout(() => {
           soundObject.unloadAsync().then(status => {
             console.log(status)
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     margin: 10,
-    marginTop: 100,
+    justifyContent: "center"
   },
   rowContainer: {
     flexDirection: "row"
@@ -156,6 +156,7 @@ const styles = StyleSheet.create({
   button: {
     flex: 1,
     height: 100,
+    width: 100,
     margin: 10,
     borderRadius: 10
   }
