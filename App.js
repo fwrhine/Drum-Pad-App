@@ -32,8 +32,15 @@ export default class App extends React.Component {
 
       const path = drumKit[drumKitSound]
       await soundObject.loadAsync(path)
-      await soundObject.playAsync().then(status=>{
+      await soundObject.playAsync().then(status => {
         console.log(status)
+        
+        // Dispose sound
+        setTimeout(() => {
+          soundObject.unloadAsync().then(status => {
+            console.log(status)
+          })
+        }, status.durationMillis);
       })
     } catch (error) {
       console.log(error)
