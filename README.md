@@ -8,6 +8,7 @@ Built with Expo (React Native).
 <img src="https://gitlab.com/fwrhine/drum-pad-app/-/raw/master/images/drumpad.gif" height="430" />
 
 ## Running the project
+Run:
 ```
 expo start
 ```
