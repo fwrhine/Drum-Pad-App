@@ -3,6 +3,9 @@ A simple drum pad app that plays drum sounds.
 
 Built with Expo (React Native).
 
+<br>
+<img src="https://gitlab.com/fwrhine/drum-pad-app/-/raw/master/drumpad.gif" height="430" />
+
 ## Running the project
 ```
 expo start
@@ -13,7 +16,7 @@ If you have not installed Expo CLI, run:
 npm install expo-cli --global
 ```
 
-See [Expo](https://docs.expo.io/get-started/installation/) for more information.
+See [Expo documentation](https://docs.expo.io/get-started/installation/) for more information.
 
 ## Dependencies
 ```
