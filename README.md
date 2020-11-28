@@ -4,7 +4,8 @@ A simple drum pad app that plays drum sounds.
 Built with Expo (React Native).
 
 <br>
-<img src="https://gitlab.com/fwrhine/drum-pad-app/-/raw/master/drumpad.gif" height="430" />
+<img src="https://gitlab.com/fwrhine/drum-pad-app/-/raw/master/images/splash.png" height="430" />
+<img src="https://gitlab.com/fwrhine/drum-pad-app/-/raw/master/images/drumpad.gif" height="430" />
 
 ## Running the project
 ```
