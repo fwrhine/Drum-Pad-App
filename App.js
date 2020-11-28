@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-
+import { AppLoading } from 'expo';
 import { Audio } from "expo-av";
+import * as Font from 'expo-font';
 
 const drumKit = {
   "bass1": require("./assets/drum_sounds/bass1.mp3"),
@@ -25,7 +26,25 @@ const colors = {
   "tom": "#FEE4C4",
 }
 
+let customFonts = {
+  'Epilogue': require('./assets/fonts/Epilogue-VariableFont_wght.ttf'),
+  'Epilogue-Bold': require('./assets/fonts/Epilogue-Bold.ttf')
+}
+
 export default class App extends React.Component {
+  state = {
+    fontsLoaded: false
+  };
+
+  async _loadFontsAsync() {
+    await Font.loadAsync(customFonts);
+    this.setState({ fontsLoaded: true });
+  }
+
+  componentDidMount() {
+    this._loadFontsAsync();
+  }
+
   playSound = async drumKitSound => {
     try {
       const soundObject = new Audio.Sound()
@@ -48,98 +67,103 @@ export default class App extends React.Component {
   }
 
   render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.rowContainer}>
+    if (this.state.fontsLoaded) {
+      return (
+        <View style={styles.container}>
+          <View style={styles.rowContainer}>
+            <TouchableOpacity
+              onPress={()=>{
+                this.playSound("bass1")
+              }}
+              style={[{
+                backgroundColor: colors["bass"]
+              }, styles.button]}>
+            </TouchableOpacity>
+  
+            <TouchableOpacity
+              onPress={()=>{
+                this.playSound("bass2")
+              }}
+              style={[{
+                backgroundColor: colors["bass"]
+              }, styles.button]}>
+            </TouchableOpacity>
+  
+            <TouchableOpacity
+              onPress={()=>{
+                this.playSound("bass3")
+              }}
+              style={[{
+                backgroundColor: colors["bass"]
+              }, styles.button]}>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.rowContainer}>
+  
           <TouchableOpacity
-            onPress={()=>{
-              this.playSound("bass1")
-            }}
-            style={[{
-              backgroundColor: colors["bass"]
-            }, styles.button]}>
-          </TouchableOpacity>
-
+              onPress={()=>{
+                this.playSound("cymbal1")
+              }}
+              style={[{
+                backgroundColor: colors["cymbal"]
+              }, styles.button]}>
+            </TouchableOpacity>
+  
+            <TouchableOpacity
+              onPress={()=>{
+                this.playSound("cymbal2")
+              }}
+              style={[{
+                backgroundColor: colors["cymbal"]
+              }, styles.button]}>
+            </TouchableOpacity>
+  
+            <TouchableOpacity
+              onPress={()=>{
+                this.playSound("drumstick")
+              }}
+              style={[{
+                backgroundColor: colors["drumstick"]
+              }, styles.button]}>
+            </TouchableOpacity>
+  
+          </View>
+          <View style={styles.rowContainer}>
+  
           <TouchableOpacity
-            onPress={()=>{
-              this.playSound("bass2")
-            }}
-            style={[{
-              backgroundColor: colors["bass"]
-            }, styles.button]}>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={()=>{
-              this.playSound("bass3")
-            }}
-            style={[{
-              backgroundColor: colors["bass"]
-            }, styles.button]}>
-          </TouchableOpacity>
+              onPress={()=>{
+                this.playSound("hihat")
+              }}
+              style={[{
+                backgroundColor: colors["hihat"]
+              }, styles.button]}>
+            </TouchableOpacity>
+  
+            <TouchableOpacity
+              onPress={()=>{
+                this.playSound("snare")
+              }}
+              style={[{
+                backgroundColor: colors["snare"]
+              }, styles.button]}>
+            </TouchableOpacity>
+  
+            <TouchableOpacity
+              onPress={()=>{
+                this.playSound("tom")
+              }}
+              style={[{
+                backgroundColor: colors["tom"]
+              }, styles.button]}>
+            </TouchableOpacity>
+  
+          </View>
+          <Text style={styles.title}>Drum Pad</Text>
         </View>
-        <View style={styles.rowContainer}>
-
-        <TouchableOpacity
-            onPress={()=>{
-              this.playSound("cymbal1")
-            }}
-            style={[{
-              backgroundColor: colors["cymbal"]
-            }, styles.button]}>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={()=>{
-              this.playSound("cymbal2")
-            }}
-            style={[{
-              backgroundColor: colors["cymbal"]
-            }, styles.button]}>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={()=>{
-              this.playSound("drumstick")
-            }}
-            style={[{
-              backgroundColor: colors["drumstick"]
-            }, styles.button]}>
-          </TouchableOpacity>
-
-        </View>
-        <View style={styles.rowContainer}>
-
-        <TouchableOpacity
-            onPress={()=>{
-              this.playSound("hihat")
-            }}
-            style={[{
-              backgroundColor: colors["hihat"]
-            }, styles.button]}>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={()=>{
-              this.playSound("snare")
-            }}
-            style={[{
-              backgroundColor: colors["snare"]
-            }, styles.button]}>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={()=>{
-              this.playSound("tom")
-            }}
-            style={[{
-              backgroundColor: colors["tom"]
-            }, styles.button]}>
-          </TouchableOpacity>
-
-        </View>
-      </View>
-    )
+      )
+    } else {
+      return <AppLoading />
+    }
   }
 }
 
@@ -148,7 +172,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     margin: 10,
-    justifyContent: "center"
+    justifyContent: "center",
+    marginTop: 50,
   },
   rowContainer: {
     flexDirection: "row"
@@ -159,5 +184,13 @@ const styles = StyleSheet.create({
     width: 100,
     margin: 10,
     borderRadius: 10
+  },
+  title: {
+    marginTop: 50,
+    textAlign: "center",
+    fontSize: 25,
+    fontWeight: "bold",
+    color: "#4f4f4f",
+    fontFamily: 'Epilogue-Bold'
   }
 });
