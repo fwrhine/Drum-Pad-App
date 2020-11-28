@@ -17,6 +17,18 @@ const drumKit = {
   "tom": require("./assets/drum_sounds/tom.mp3"),
 }
 
+const soundNames = {
+  "bass1": "bass",
+  "bass2": "bass",
+  "bass3": "bass",
+  "cymbal1": "cymbal",
+  "cymbal2": "cymbal",
+  "drumstick": "drumstick",
+  "hihat": "hihat",
+  "snare": "snare",
+  "tom": "tom",
+}
+
 const colors = {
   "bass": "#6CC2BD",
   "cymbal": "#5A809E",
@@ -33,12 +45,18 @@ let customFonts = {
 
 export default class App extends React.Component {
   state = {
-    fontsLoaded: false
-  };
+    fontsLoaded: false,
+    lastClicked: ""
+  }
 
-  async _loadFontsAsync() {
+  _loadFontsAsync = async () => {
     await Font.loadAsync(customFonts);
     this.setState({ fontsLoaded: true });
+  }
+
+  onDrumPress = (type) => {
+    this.playSound(type);
+    this.setState({ lastClicked: soundNames[type] });
   }
 
   componentDidMount() {
@@ -72,27 +90,21 @@ export default class App extends React.Component {
         <View style={styles.container}>
           <View style={styles.rowContainer}>
             <TouchableOpacity
-              onPress={()=>{
-                this.playSound("bass1")
-              }}
+              onPress={(sound) => this.onDrumPress("bass1")}
               style={[{
                 backgroundColor: colors["bass"]
               }, styles.button]}>
             </TouchableOpacity>
   
             <TouchableOpacity
-              onPress={()=>{
-                this.playSound("bass2")
-              }}
+              onPress={(sound) => this.onDrumPress("bass2")}
               style={[{
                 backgroundColor: colors["bass"]
               }, styles.button]}>
             </TouchableOpacity>
   
             <TouchableOpacity
-              onPress={()=>{
-                this.playSound("bass3")
-              }}
+              onPress={(sound) => this.onDrumPress("bass3")}
               style={[{
                 backgroundColor: colors["bass"]
               }, styles.button]}>
@@ -101,27 +113,21 @@ export default class App extends React.Component {
           <View style={styles.rowContainer}>
   
           <TouchableOpacity
-              onPress={()=>{
-                this.playSound("cymbal1")
-              }}
+              onPress={(sound) => this.onDrumPress("cymbal1")}
               style={[{
                 backgroundColor: colors["cymbal"]
               }, styles.button]}>
             </TouchableOpacity>
   
             <TouchableOpacity
-              onPress={()=>{
-                this.playSound("cymbal2")
-              }}
+              onPress={(sound) => this.onDrumPress("cymbal1")}
               style={[{
                 backgroundColor: colors["cymbal"]
               }, styles.button]}>
             </TouchableOpacity>
   
             <TouchableOpacity
-              onPress={()=>{
-                this.playSound("drumstick")
-              }}
+              onPress={(sound) => this.onDrumPress("drumstick")}
               style={[{
                 backgroundColor: colors["drumstick"]
               }, styles.button]}>
@@ -131,34 +137,28 @@ export default class App extends React.Component {
           <View style={styles.rowContainer}>
   
           <TouchableOpacity
-              onPress={()=>{
-                this.playSound("hihat")
-              }}
+              onPress={(sound) => this.onDrumPress("hihat")}
               style={[{
                 backgroundColor: colors["hihat"]
               }, styles.button]}>
             </TouchableOpacity>
   
             <TouchableOpacity
-              onPress={()=>{
-                this.playSound("snare")
-              }}
+              onPress={(sound) => this.onDrumPress("snare")}
               style={[{
                 backgroundColor: colors["snare"]
               }, styles.button]}>
             </TouchableOpacity>
   
             <TouchableOpacity
-              onPress={()=>{
-                this.playSound("tom")
-              }}
+              onPress={(sound) => this.onDrumPress("tom")}
               style={[{
                 backgroundColor: colors["tom"]
               }, styles.button]}>
             </TouchableOpacity>
   
           </View>
-          <Text style={styles.title}>Drum Pad</Text>
+          <Text style={styles.title}>{this.state.lastClicked}</Text>
         </View>
       )
     } else {
@@ -191,6 +191,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: "bold",
     color: "#4f4f4f",
-    fontFamily: 'Epilogue-Bold'
+    fontFamily: 'Epilogue-Bold',
+    height: 30
   }
 });
