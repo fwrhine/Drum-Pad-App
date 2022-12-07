@@ -997,16 +997,6 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@expo-google-fonts/alata@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@expo-google-fonts/alata/-/alata-0.1.0.tgz#480681fe2f7183e0a55a4aded129071cdf380ba5"
-  integrity sha512-fw+Z1ptZi5hNqwNRMYveC9SAPeYcTG0ml/OSehOZil42BfV6P7Xekw2WDqpbo4PoV9NrjFAnARqFlQ665pOaLg==
-
-"@expo-google-fonts/inter@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@expo-google-fonts/inter/-/inter-0.1.0.tgz#399f068437824fcbf6aa3da5fcf490dba2af85a3"
-  integrity sha512-Y6GCqsUX6JwexQ2wmBkMiJBY6M2GpNQRTczzIGbBGhXWQxqGmP5awRcf0ZJV+OlLeJcKAzas/TW45ZLdpG3yzA==
-
 "@expo/configure-splash-screen@0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@expo/configure-splash-screen/-/configure-splash-screen-0.2.0.tgz#84f9f71363259f16fd0073636a198c750a3cdd7c"
@@ -2119,9 +2109,9 @@ decamelize@^1.2.0:
   integrity sha1-9lNNFRSCabIDUue+4m9QH5oZEpA=
 
 decode-uri-component@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
-  integrity sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.2.tgz#e69dbe25d37941171dd540e024c444cd5188e1e9"
+  integrity sha512-FqUYQ+8o158GyGTrMFJms9qh3CqTKvAqgqsTnkLI8sKu0028orqBhxNMFkFen0zGyg6epACD32pjVk58ngIErQ==
 
 deep-assign@^3.0.0:
   version "3.0.0"
@@ -2491,11 +2481,6 @@ expo-sqlite@~8.4.0:
   dependencies:
     "@expo/websql" "^1.0.1"
     lodash "^4.17.15"
-
-expo-status-bar@~1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/expo-status-bar/-/expo-status-bar-1.0.2.tgz#2441a77c56be31597898337b0d086981f2adefd8"
-  integrity sha512-5313u744GcLzCadxIPXyTkYw77++UXv1dXCuhYDxDbtsEf93iMra7WSvzyE8a7mRQLIIPRuGnBOdrL/V1C7EOQ==
 
 expo@~39.0.2:
   version "39.0.4"
